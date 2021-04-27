@@ -90,7 +90,7 @@ public class testClass {
 			//Assert expected error message is showing 
 			System.out.println("Expected forename error is showing: " + actForename.contains(expForename));
 		}catch (Exception e){
-			System.out.print("Forename error is not displayed");
+			System.out.println("Forename error is not displayed");
 		}
 	
 		//Validate email error
@@ -106,7 +106,7 @@ public class testClass {
 			//Assert expected error message is showing 
 			System.out.println("Expected email error is showing: " + actEmail.contains(expEmail));
 		}catch (Exception e){
-			System.out.print("Email error is not displayed");
+			System.out.println("Email error is not displayed");
 		}
 		
 		try {
@@ -123,9 +123,11 @@ public class testClass {
 			//Assert expected error message is showing 
 			System.out.println("Expected message error is showing: " + actMessage.contains(expMessage));
 		}catch (Exception e){
-			System.out.print("Message error is not displayed");
+			System.out.println("Message error is not displayed");
 		}
 			
-		}
+	}
 
 }
+
+
