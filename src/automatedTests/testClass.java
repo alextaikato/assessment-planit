@@ -2,6 +2,7 @@ package automatedTests;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,10 +23,11 @@ public class testClass {
 		driver.manage().window().maximize();
 
 		//open browser with desried URL
-		driver.get("https://www.google.com");
+		driver.get("https://jupiter.cloud.planittesting.com/");
 
-		//closing the browser
-		driver.close();
+		driver.findElement(By.linkText("Contact")).click();
+		
+		driver.findElement(By.linkText("Submit")).click();
 
 		}
 
