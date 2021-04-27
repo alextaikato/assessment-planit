@@ -10,15 +10,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class testClass {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		//setting the driver executable
-		System.setProperty("webdriver.chrome.driver", "chromedriver90.exe");
-
-		//Initiating your chromedriver
+		 System.setProperty("webdriver.chrome.driver", "chromedriver90.exe");
+		
+		//Initiating chromedriver
 		WebDriver driver=new ChromeDriver();
+
+		
+		
 
 		//Applied wait time
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -34,6 +36,12 @@ public class testClass {
 		//click submit
 		driver.findElement(By.linkText("Submit")).click();
 		
+		
+		validateErrors(driver);
+		
+		
+		}
+	public static void validateErrors(WebDriver driver) {
 		//Validate error message
 		
 		//Expected string
@@ -87,7 +95,7 @@ public class testClass {
 		//Assert expected error message is showing 
 		System.out.println("Expected message error is showing: " + actMessage.contains(expMessage));
 		
-		
+			
 		}
 
 }
