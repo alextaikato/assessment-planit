@@ -33,14 +33,20 @@ public class testClass2 {
 		//Navigate to contact page
 		driver.findElement(By.linkText("Contact")).click();
 		
+		
+		
+		
+		//Populate feilds
+		populateFeilds(driver);
+		
 		//click submit
 		driver.findElement(By.linkText("Submit")).click();
 		
+		//Applied wait time
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		
-		populateFeilds(driver);
-		
-		validateErrors(driver);
+		//Validate success
+		validateSuccess(driver);
 		
 		}
 	
@@ -61,71 +67,20 @@ public class testClass2 {
 		messageText.sendKeys("This is a message");
 	}
 	
-	public static void validateErrors(WebDriver driver) {
-		 
-		//Validate error message
-		
-		//Expected string
-		String exp = "but we won't get it unless you complete the form correctly";
-		
-		//Actual error message
-		WebElement m = driver.findElement(By.className("alert"));
-		String act = m.getText();
-		System.out.println("Error message is: "+ act);
-		
-		//Assert expected error message is showing 
-		System.out.println("Expected error is showing: " + act.contains(exp));
-		
-		//Validate forename error
-		
-		
-		try {
-			String expForename = "Forename is required";
-			
-			//Actual error message
-			WebElement forename = driver.findElement(By.id("forename-err"));
-			String actForename = forename.getText();
-			System.out.println("Error message is: "+ actForename);
-			
-			//Assert expected error message is showing 
-			System.out.println("Expected forename error is showing: " + actForename.contains(expForename));
-		}catch (Exception e){
-			System.out.println("Forename error is not displayed");
-		}
-	
+	public static void validateSuccess(WebDriver driver) {
 		//Validate email error
 		try {
-			//Expected string
-			String expEmail = "Email is required";
 			
 			//Actual error message
-			WebElement email = driver.findElement(By.id("email-err"));
-			String actEmail = email.getText();
-			System.out.println("Error message is: "+ actEmail);
+			WebElement success = driver.findElement(By.className("alert-success"));
+			String actSuccess = success.getText();
+			System.out.println("Success message is: "+ actSuccess);
 			
-			//Assert expected error message is showing 
-			System.out.println("Expected email error is showing: " + actEmail.contains(expEmail));
+			
 		}catch (Exception e){
-			System.out.println("Email error is not displayed");
+			System.out.println("Success message is not showing");
 		}
 		
-		try {
-			//Validate message error
-	
-			//Expected string
-			String expMessage = "Message is required";
-			
-			//Actual error message
-			WebElement message = driver.findElement(By.id("message-err"));
-			String actMessage = message.getText();
-			System.out.println("Error message is: "+ actMessage);
-			
-			//Assert expected error message is showing 
-			System.out.println("Expected message error is showing: " + actMessage.contains(expMessage));
-		}catch (Exception e){
-			System.out.println("Message error is not displayed");
-		}
-			
 	}
 
 }
