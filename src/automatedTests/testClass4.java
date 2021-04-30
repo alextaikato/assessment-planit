@@ -48,19 +48,31 @@ public class testClass4 {
 		//Save table
 		WebElement cart = driver.findElement(By.className("cart-items"));
 		//Print table rows
+		boolean funnyCow= false;
+		boolean fluffyBunny= false;
 		List<WebElement> rows = cart.findElements(By.tagName("tr"));
 		for (WebElement row : rows) {
 		    List<WebElement> cols = row.findElements(By.tagName("td"));
 		    for (WebElement col : cols) {
-		    	
+		    	if (col.getText().equals("Funny Cow")) {
+		    		fluffyBunny = false;
+		    		funnyCow = true;
+		    	}else if(col.getText().equals("Fluffy Bunny")) {
+		    		funnyCow = false;
+		    		fluffyBunny = true;
+		    	}
 		    	try {
 		    		WebElement quantity = col.findElement(By.tagName("input"));
 		    		String quantityVal = quantity.getAttribute("value");
-		    		System.out.print("Quantity:"+ quantityVal);
+		    		if (funnyCow ==true) {
+		    			System.out.print("There are: " + quantityVal + " Funny Cows in the cart.");
+		    		} else if(fluffyBunny==true) {
+		    			System.out.print("There are: " + quantityVal + " Fluffy Bunnies in the cart.");
+		    		}
 		    	}catch (Exception e) {
 		    		
 		    	}
-		        System.out.print(col.getText() + "\t");
+		        
 		    }
 		    System.out.println();
 			}
